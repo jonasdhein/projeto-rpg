@@ -108,11 +108,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //Preenche os atributos do personagem conforme a classe escolhida
             if(rbGuerreiro.isSelected()){
                 personagem.setClasse("Guerreiro");
+                personagem.setVida(100);
+                personagem.setAtaque(60);
                 //preencher o resto dos atributos
             }else if(rbMago.isSelected()){
                 personagem.setClasse("Mago");
+                personagem.setVida(50);
+                personagem.setAtaque(100);
             }else{
                 personagem.setClasse("Paladino");
+                personagem.setVida(75);
+                personagem.setAtaque(75);
             }
             
             //Retorna o objeto preenchido
