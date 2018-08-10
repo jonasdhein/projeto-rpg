@@ -14,6 +14,7 @@ import modelos.Personagem;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    Personagem personagem = new Personagem();
     /**
      * Creates new form TelaPrincipal
      */
@@ -21,9 +22,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         
         //Incorporar todos os radio buttons no RadioGroup
-        bgGrupo.add(rbGuerreiro);
-        bgGrupo.add(rbMago);
-        bgGrupo.add(rbPaladino);
+        //bgGrupo.add(rbGuerreiro);
+        //bgGrupo.add(rbMago);
+        //bgGrupo.add(rbPaladino);
         
     }
 
@@ -37,116 +38,158 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         bgGrupo = new javax.swing.ButtonGroup();
-        rbGuerreiro = new javax.swing.JRadioButton();
-        rbMago = new javax.swing.JRadioButton();
-        rbPaladino = new javax.swing.JRadioButton();
-        btAvancar = new javax.swing.JButton();
         txtNomePersonagem = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        lblClerigo = new javax.swing.JLabel();
+        lblGuerreiro = new javax.swing.JLabel();
+        lblMago = new javax.swing.JLabel();
+        lblCavaleiro = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        rbGuerreiro.setSelected(true);
-        rbGuerreiro.setText("GUERREIRO");
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
+        jLabel1.setText("Nome:");
 
-        rbMago.setText("MAGO");
-
-        rbPaladino.setText("PALADINO");
-
-        btAvancar.setText("AVANÇAR");
-        btAvancar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAvancarActionPerformed(evt);
+        lblClerigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clerigo.png"))); // NOI18N
+        lblClerigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblClerigoKeyReleased(evt);
             }
         });
 
-        jLabel1.setText("Nome:");
+        lblGuerreiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/guerreiro.png"))); // NOI18N
+        lblGuerreiro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblGuerreiroKeyReleased(evt);
+            }
+        });
+
+        lblMago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mago.png"))); // NOI18N
+        lblMago.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblMagoKeyReleased(evt);
+            }
+        });
+
+        lblCavaleiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cavaleiro.png"))); // NOI18N
+        lblCavaleiro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblCavaleiroKeyReleased(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Escolha a sua classe");
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Bem-Vindo ao Jogo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAvancar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(rbGuerreiro)
-                        .addGap(96, 96, 96)
-                        .addComponent(rbMago)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                        .addComponent(rbPaladino))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblCavaleiro)
+                        .addGap(55, 55, 55)
+                        .addComponent(lblGuerreiro)
+                        .addGap(106, 106, 106))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblClerigo)
+                        .addGap(55, 55, 55)
+                        .addComponent(lblMago)
+                        .addGap(18, 18, 18))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel6)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbGuerreiro)
-                    .addComponent(rbMago)
-                    .addComponent(rbPaladino))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(btAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGuerreiro)
+                    .addComponent(lblCavaleiro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMago)
+                    .addComponent(lblClerigo))
+                .addGap(51, 51, 51))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAvancarActionPerformed
         
-        if(txtNomePersonagem.getText().trim().length() > 3){
-            //Avançar para a tela confronto
-            //Enviar os dados da Classe escolhida para a tela Confronto
-            Personagem personagemEscolhido = escolherClasse();
+    private void lblCavaleiroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblCavaleiroKeyReleased
+        personagem.setClasse("Cavaleiro");
+        personagem.setVida(50);
+        personagem.setAtaque(100);
+    }//GEN-LAST:event_lblCavaleiroKeyReleased
 
-            TelaConfronto tela = new TelaConfronto(personagemEscolhido);
-            tela.setVisible(true); //Mostra a tela de confronto
+    private void lblGuerreiroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblGuerreiroKeyReleased
+        personagem.setClasse("Guerreiro");
+        personagem.setVida(100);
+        personagem.setAtaque(60);
+    }//GEN-LAST:event_lblGuerreiroKeyReleased
 
-            //Colocar a tela atual não visivel
-            this.setVisible(false);
-        }else{
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um nome com pelo menos 4 caracteres","ERRRRROOOOU",'e');
-        }
-    }//GEN-LAST:event_btAvancarActionPerformed
+    private void lblClerigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblClerigoKeyReleased
+        personagem.setClasse("Clérigo");
+        personagem.setVida(100);
+        personagem.setAtaque(60);
+    }//GEN-LAST:event_lblClerigoKeyReleased
 
-    private Personagem escolherClasse(){
+    private void lblMagoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblMagoKeyReleased
+        personagem.setClasse("Mago");
+        personagem.setVida(100);
+        personagem.setAtaque(60);
+    }//GEN-LAST:event_lblMagoKeyReleased
+        
+    private void avancar(){
         try{
-            Personagem personagem = new Personagem();
+            this.personagem.setNome(txtNomePersonagem.getText().trim());
             
-            //Preenche os atributos do personagem conforme a classe escolhida
-            personagem.setNome(txtNomePersonagem.getText().trim());
-            if(rbGuerreiro.isSelected()){
-                personagem.setClasse("Guerreiro");
-                personagem.setVida(100);
-                personagem.setAtaque(60);
-                //preencher o resto dos atributos
-            }else if(rbMago.isSelected()){
-                personagem.setClasse("Mago");
-                personagem.setVida(50);
-                personagem.setAtaque(100);
+            if(txtNomePersonagem.getText().trim().length() > 3){
+                //Avançar para a tela confronto
+                //Enviar os dados da Classe escolhida para a tela Confronto
+                Personagem personagemEscolhido = this.personagem;
+
+                TelaConfronto tela = new TelaConfronto(personagemEscolhido);
+                tela.setVisible(true); //Mostra a tela de confronto
+
+                //Colocar a tela atual não visivel
+                this.setVisible(false);
             }else{
-                personagem.setClasse("Paladino");
-                personagem.setVida(75);
-                personagem.setAtaque(75);
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um nome com pelo menos 4 caracteres","ERRRRROOOOU",'e');
             }
-            
-            //Retorna o objeto preenchido
-            return personagem;
-            
+
         }catch(Exception ex){
-            return null;
+            
         }
     }
     
@@ -187,11 +230,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgGrupo;
-    private javax.swing.JButton btAvancar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton rbGuerreiro;
-    private javax.swing.JRadioButton rbMago;
-    private javax.swing.JRadioButton rbPaladino;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblCavaleiro;
+    private javax.swing.JLabel lblClerigo;
+    private javax.swing.JLabel lblGuerreiro;
+    private javax.swing.JLabel lblMago;
     private javax.swing.JTextField txtNomePersonagem;
     // End of variables declaration//GEN-END:variables
 }

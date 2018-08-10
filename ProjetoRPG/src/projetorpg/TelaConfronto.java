@@ -19,6 +19,8 @@ public class TelaConfronto extends javax.swing.JFrame {
     Personagem personagem;
     Oponente oponente = new Oponente();
     Random gerador = new Random();
+    int maxVidaPersonagem;
+    int maxVidaOponente;
             
     /**
      * Creates new form TelaConfronto
@@ -27,6 +29,7 @@ public class TelaConfronto extends javax.swing.JFrame {
         initComponents();
         
         this.personagem = personagem;
+        this.maxVidaPersonagem = personagem.getVida();
         //Preenche os dados do personagem
         mostrarPersonagem();
         
@@ -35,6 +38,10 @@ public class TelaConfronto extends javax.swing.JFrame {
     }
     
     private void mostrarPersonagem(){
+        prbVidaPersonagem.setMaximum(maxVidaPersonagem);
+        prbVidaPersonagem.setValue(personagem.getVida());
+        prbVidaPersonagem.setName(String.valueOf(personagem.getVida()));
+            
         lblClasse.setText(personagem.getNome() + " - " + personagem.getClasse());
         lblVidaPersonagem.setText(String.valueOf(personagem.getVida()));
         lblAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
@@ -45,6 +52,7 @@ public class TelaConfronto extends javax.swing.JFrame {
         try{
             oponente.setAtaque(gerador.nextInt(135) + 1);
             oponente.setVida(gerador.nextInt(300) + 1);
+            maxVidaOponente = oponente.getVida();
             
         }catch(Exception ex){
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage().toString(), 'e');
@@ -52,6 +60,10 @@ public class TelaConfronto extends javax.swing.JFrame {
     }
     
     private void mostrarOponente(){
+        prbVidaOponente.setMaximum(maxVidaOponente);
+        prbVidaOponente.setValue(oponente.getVida());
+        prbVidaOponente.setName(String.valueOf(oponente.getVida()));
+        
         lblVidaOponente.setText(String.valueOf(oponente.getVida()));
         lblAtaqueOponente.setText(String.valueOf(oponente.getAtaque()));
     }
@@ -94,6 +106,8 @@ public class TelaConfronto extends javax.swing.JFrame {
         lblVidaOponente = new javax.swing.JLabel();
         lblAtaqueOponente = new javax.swing.JLabel();
         btAtacar = new javax.swing.JButton();
+        prbVidaPersonagem = new javax.swing.JProgressBar();
+        prbVidaOponente = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,6 +152,20 @@ public class TelaConfronto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btAtacar, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 249, -1, -1));
+
+        prbVidaPersonagem.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
+        prbVidaPersonagem.setForeground(new java.awt.Color(255, 51, 51));
+        prbVidaPersonagem.setValue(100);
+        prbVidaPersonagem.setString("100");
+        prbVidaPersonagem.setStringPainted(true);
+        getContentPane().add(prbVidaPersonagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        prbVidaOponente.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
+        prbVidaOponente.setForeground(new java.awt.Color(255, 51, 51));
+        prbVidaOponente.setValue(100);
+        prbVidaOponente.setString("100");
+        prbVidaOponente.setStringPainted(true);
+        getContentPane().add(prbVidaOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,5 +231,7 @@ public class TelaConfronto extends javax.swing.JFrame {
     private javax.swing.JLabel lblClasse;
     private javax.swing.JLabel lblVidaOponente;
     private javax.swing.JLabel lblVidaPersonagem;
+    private javax.swing.JProgressBar prbVidaOponente;
+    private javax.swing.JProgressBar prbVidaPersonagem;
     // End of variables declaration//GEN-END:variables
 }
