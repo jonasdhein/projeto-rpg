@@ -17,7 +17,7 @@ import modelos.Personagem;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    Personagem personagem = new Personagem();
+    Personagem personagem;
     /**
      * Creates new form TelaPrincipal
      */
@@ -27,15 +27,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         try{
             
             //ASTROLOGA
-            ajustarImagem("D:\\JAVA\\ProjetoRPG\\src\\imagens\\astrologa.png", lblAstrologa);        
+            ajustarImagem("/Users/jonasdhein/Projetos/JAVA/projeto-rpg/src/imagens/astrologa.png", lblAstrologa);        
             lblDadosAstrologa.setText("<html>Vida: 70<br/>Ataque:120</html>");
             
             //HEROINA
-            ajustarImagem("D:\\JAVA\\ProjetoRPG\\src\\imagens\\heroina.png", lblHeroina);     
+            ajustarImagem("/Users/jonasdhein/Projetos/JAVA/projeto-rpg/src/imagens/heroina.png", lblHeroina);     
             lblDadosHeroina.setText("<html>Vida: 100<br/>Ataque:90</html>");
             
             //GUERREIRO
-            ajustarImagem("D:\\JAVA\\ProjetoRPG\\src\\imagens\\guerreiro.png", lblGuerreiro);     
+            ajustarImagem("/Users/jonasdhein/Projetos/JAVA/projeto-rpg/src/imagens/guerreiro.png", lblGuerreiro);     
             lblDadosGuerreiro.setText("<html>Vida: 90<br/>Ataque:100</html>");
             
         }catch(Exception ex){
@@ -192,10 +192,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(lblGuerreiro, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHeroina, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtAstrologa)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbtGuerreiro)
-                    .addComponent(rbtHeroina))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rbtAstrologa)
+                        .addComponent(rbtHeroina)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDadosHeroina, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,6 +212,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void rbtAstrologaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAstrologaActionPerformed
         //Define o personagem como Astrologa
+        personagem = new Personagem();
         personagem.setClasse("Astróloga");
         personagem.setAtaque(120);
         personagem.setVida(70);
@@ -218,6 +220,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void rbtHeroinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtHeroinaActionPerformed
         //Define o personagem como Heroína
+        personagem = new Personagem();
         personagem.setClasse("Heroína");
         personagem.setAtaque(100);
         personagem.setVida(90);
@@ -225,6 +228,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void rbtGuerreiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtGuerreiroActionPerformed
         //Define o personagem como Guerreiro
+        personagem = new Personagem();
         personagem.setClasse("Guerreiro");
         personagem.setAtaque(90);
         personagem.setVida(100);
@@ -254,7 +258,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             this.personagem.setNome(txtNomePersonagem.getText().trim());
             
             if(txtNomePersonagem.getText().trim().length() > 3){
-                
                 
                 //Enviar os dados da Classe escolhida para a tela Confronto
                 TelaConfronto tela = new TelaConfronto(this.personagem);

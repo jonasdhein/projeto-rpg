@@ -74,7 +74,7 @@ public class TelaConfronto extends javax.swing.JFrame {
         int ataque = 0;
         int valorDado = gerador.nextInt(20) + 1;
         if(valorDado > 13){ //ataque crítico
-            ataque = personagem.getAtaque() / 2;
+            ataque = personagem.getAtaque();
         }else{
             ataque = personagem.getAtaque() / 3;
         }
