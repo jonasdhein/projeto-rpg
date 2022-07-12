@@ -16,6 +16,16 @@ public class Personagem {
     private int vida;
     private int ataque;
 
+    public Personagem(String classe, String nome, int vida, int ataque) {
+        this.classe = classe;
+        this.nome = nome;
+        this.vida = vida;
+        this.ataque = ataque;
+    }
+
+    public Personagem() {
+    }
+
     public String getClasse() {
         return classe;
     }

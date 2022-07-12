@@ -50,6 +50,7 @@ public class TelaConfronto extends javax.swing.JFrame {
     
     private void gerarOponente(){
         try{
+            oponente.setNome("");
             oponente.setAtaque(gerador.nextInt(135) + 1);
             oponente.setVida(gerador.nextInt(300) + 1);
             maxVidaOponente = oponente.getVida();
@@ -108,6 +109,7 @@ public class TelaConfronto extends javax.swing.JFrame {
         btAtacar = new javax.swing.JButton();
         prbVidaPersonagem = new javax.swing.JProgressBar();
         prbVidaOponente = new javax.swing.JProgressBar();
+        lblOponente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -119,7 +121,7 @@ public class TelaConfronto extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 28, -1, -1));
 
         lblClasse.setText("...");
-        getContentPane().add(lblClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 6, -1, -1));
+        getContentPane().add(lblClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         jLabel3.setText("Ataque:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 50, -1, -1));
@@ -166,6 +168,9 @@ public class TelaConfronto extends javax.swing.JFrame {
         prbVidaOponente.setString("100");
         prbVidaOponente.setStringPainted(true);
         getContentPane().add(prbVidaOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+
+        lblOponente.setText("...");
+        getContentPane().add(lblOponente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -229,6 +234,7 @@ public class TelaConfronto extends javax.swing.JFrame {
     private javax.swing.JLabel lblAtaqueOponente;
     private javax.swing.JLabel lblAtaquePersonagem;
     private javax.swing.JLabel lblClasse;
+    private javax.swing.JLabel lblOponente;
     private javax.swing.JLabel lblVidaOponente;
     private javax.swing.JLabel lblVidaPersonagem;
     private javax.swing.JProgressBar prbVidaOponente;
