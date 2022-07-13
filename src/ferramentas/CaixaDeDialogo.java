@@ -65,4 +65,11 @@ public class CaixaDeDialogo {
         int escolha = JOptionPane.showOptionDialog(null,frase,boxFrase,JOptionPane.YES_NO_OPTION,iconTypes.indexOf(tipo),null,opcoes,opcoes[opcaoPadrao]);
         return (escolha == 0);
     }
+    
+    public static int solicitarEscolha(String frase, String boxFrase, String op1, String op2, String op3 ) {
+        String[] opcoes = { op1, op2, op3 };
+        int opcaoPadrao = 0;
+        int escolha = JOptionPane.showOptionDialog(null,frase,boxFrase,JOptionPane.YES_NO_CANCEL_OPTION, 3, null, opcoes, opcoes[opcaoPadrao]);
+        return escolha;
+    }
 }

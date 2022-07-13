@@ -16,7 +16,7 @@ import modelos.Personagem;
  */
 public class TelaConfronto extends javax.swing.JFrame {
 
-    Personagem personagem;
+    public static Personagem personagem;
     Oponente oponente = new Oponente();
     Random gerador = new Random();
     int maxVidaPersonagem;

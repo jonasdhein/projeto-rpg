@@ -7,6 +7,16 @@ package projetorpg;
 
 import ferramentas.CaixaDeDialogo;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import modelos.Personagem;
@@ -15,27 +25,27 @@ import modelos.Personagem;
  *
  * @author Jonas
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public class TelaEscolhaClasse extends javax.swing.JFrame {
 
     Personagem personagem;
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal() {
+    public TelaEscolhaClasse() {
         initComponents();
         
         try{
             
             //ASTROLOGA
-            ajustarImagem("/Users/jonasdhein/Projetos/JAVA/projeto-rpg/src/imagens/astrologa.png", lblAstrologa);        
+            ajustarImagem("src/imagens/astrologa.png", lblAstrologa);        
             lblDadosAstrologa.setText("<html>Vida: 70<br/>Ataque:120</html>");
             
             //HEROINA
-            ajustarImagem("/Users/jonasdhein/Projetos/JAVA/projeto-rpg/src/imagens/heroina.png", lblHeroina);     
+            ajustarImagem("src/imagens/" + "heroina.png", lblHeroina);     
             lblDadosHeroina.setText("<html>Vida: 100<br/>Ataque:90</html>");
             
             //GUERREIRO
-            ajustarImagem("/Users/jonasdhein/Projetos/JAVA/projeto-rpg/src/imagens/guerreiro.png", lblGuerreiro);     
+            ajustarImagem("src/imagens/guerreiro.png", lblGuerreiro);     
             lblDadosGuerreiro.setText("<html>Vida: 90<br/>Ataque:100</html>");
             
         }catch(Exception ex){
@@ -100,7 +110,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(rbtGuerreiro);
-        rbtGuerreiro.setText("Guerreiro");
+        rbtGuerreiro.setText("Vagabundo");
         rbtGuerreiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtGuerreiroActionPerformed(evt);
@@ -216,6 +226,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         personagem.setClasse("Astróloga");
         personagem.setAtaque(120);
         personagem.setVida(70);
+        
     }//GEN-LAST:event_rbtAstrologaActionPerformed
 
     private void rbtHeroinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtHeroinaActionPerformed
@@ -274,6 +285,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }
     
+    public void tocarSom(String soundFile) {
+        AudioInputStream audioIn = null;
+        try {
+            File f = new File("./" + soundFile);
+            audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+            
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
+            System.out.println("Erro ao tocar som: " + ex.getMessage());
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -291,20 +316,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEscolhaClasse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEscolhaClasse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEscolhaClasse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEscolhaClasse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new TelaEscolhaClasse().setVisible(true);
             }
         });
     }
